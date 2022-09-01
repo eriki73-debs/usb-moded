@@ -23,7 +23,7 @@ configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
 	if [ ! -x configure ]; then ./autogen.sh; fi	
-	./configure --prefix=/usr --enable-n900 --enable-app-sync --enable-udev
+	./configure --prefix=/usr --enable-app-sync --enable-udev --enable-systemd
 
 	touch configure-stamp
 
@@ -55,7 +55,7 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_prep
 	dh_installdirs
 
 	# Add here commands to install the package into debian/usb-moded.
